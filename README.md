@@ -2,7 +2,7 @@
 Twitch channel points wheel of fortune
 
 ## Description
-Using the Winwheel.js and ComfyJS, the wheel is activated by certain channel point redemtions.
+Using the Winwheel.js and ComfyJS, the wheel is activated by certain channel point redemptions.
 
 Find information on how to configure the Winwheel.js settings found in config.js here: https://github.com/zarocknz/javascript-winwheel
 
