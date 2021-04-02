@@ -37,8 +37,8 @@
         <div id="myDIV" style="display:none; width:438;">
             <table cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                    <td width="438" height="500" class="the_wheel"  valign="center">
-                        <canvas id="canvas" width="434" height="434">
+                    <td width="438" height="500" class="the_wheel"  align-items="center">
+                        <canvas id="canvas" style="margin-top:50px; margin-left:2px" width="434" height="434">
                             <p style="color: white" >Sorry, your browser doesn't support canvas. Please try another.</p>
                         </canvas>
                     </td>
@@ -56,7 +56,8 @@
 
             // Vars used by the code in this page to do power controls.
             let wheelSpinning = false;
-            var theWheel
+            var wheelSettings;
+            let theWheel;
 
             ComfyJS.onChat = ( user, message, flags, self, extra ) => {
                 if( flags.customReward &&
@@ -68,121 +69,84 @@
                 if( flags.customReward &&
                         extra.customRewardId === channelPointsIDS.TF2 ) {
 
-                    theWheel = new Winwheel({
-                        'outerRadius'     : wheelSettingsTF2.outerRadius,
-                        'innerRadius'     : wheelSettingsTF2.innerRadius,
-                        'textFontSize'    : wheelSettingsTF2.textFontSize,
-                        'textOrientation' : wheelSettingsTF2.textOrientation,
-                        'textAlignment'   : wheelSettingsTF2.textAlignment,
-                        'numSegments'     : wheelSettingsTF2.numSegments,
-                        'segments'        : wheelSettingsTF2.segments,
-                        'animation'    : 
-                        {
-                            'type'     : wheelSettingsTF2.animation.type,
-                            'duration' : wheelSettingsTF2.animation.duration,
-                            'spins'    : wheelSettingsTF2.animation.spins,
-                            'callbackFinished' : alertPrize,
-                            'callbackSound'    : playSound,
-                            'soundTrigger'     : wheelSettingsTF2.animation.soundTrigger
-                        },
-                        'pins' :
-                        {
-                            'number'     : wheelSettingsTF2.pins.number,
-                            'fillStyle'  : wheelSettingsTF2.pins.fillStyle,
-                            'outerRadius': wheelSettingsTF2.pins.outerRadius
-                        }
-                    });
+                    wheelSettings = wheelSettingsTF2
+                    CheckandRun(user, message);
 
-                    redeemerUsername = user
-
-                    if (wheelSpinning){
-                        ComfyJS.Say(user + ", the wheel is already spinning, wait your turn! My points now...")
-                    }
-
-                    var x = document.getElementById("myDIV");
-                    if (x.style.display === "none") {
-                        x.style.display = "block";
-                    }
-                    setTimeout(function(){
-                    var x = document.getElementById("myDIV");
-                    if (message.toLowerCase() === "low") {
-                        startSpin(1);
-                        
-                    }else if (message.toLowerCase() === "medium") {
-                        startSpin(2);
-                    }else if (message.toLowerCase() === "high") {
-                        startSpin(3);
-                    }else {
-                        var randomPower = Math.floor(Math.random() * 3) + 1;
-                        startSpin(Number(randomPower));
-                    }
-                }, 2000);
-                    
                 }
 
                 //Stream wide spin
                 if( flags.customReward &&
                         extra.customRewardId === channelPointsIDS.StreamWide ) {
 
-                    theWheel = new Winwheel({
-                        'outerRadius'     : wheelSettingsStream.outerRadius,
-                        'innerRadius'     : wheelSettingsStream.innerRadius,
-                        'textFontSize'    : wheelSettingsStream.textFontSize,
-                        'textOrientation' : wheelSettingsStream.textOrientation,
-                        'textAlignment'   : wheelSettingsStream.textAlignment,
-                        'numSegments'     : wheelSettingsStream.numSegments,
-                        'segments'        : wheelSettingsStream.segments,
-                        'animation'    : 
-                        {
-                            'type'     : wheelSettingsStream.animation.type,
-                            'duration' : wheelSettingsStream.animation.duration,
-                            'spins'    : wheelSettingsStream.animation.spins,
-                            'callbackFinished' : alertPrize,
-                            'callbackSound'    : playSound,
-                            'soundTrigger'     : wheelSettingsStream.animation.soundTrigger
-                        },
-                        'pins' :
-                        {
-                            'number'     : wheelSettingsStream.pins.number,
-                            'fillStyle'  : wheelSettingsStream.pins.fillStyle,
-                            'outerRadius': wheelSettingsStream.pins.outerRadius
-                        }
-                    });
 
-                    redeemerUsername = user
-
-                    if (wheelSpinning){
-                        ComfyJS.Say(user + ", the wheel is already spinning, wait your turn! My points now...")
-                    }
-
-                    var x = document.getElementById("myDIV");
-                    if (x.style.display === "none") {
-                        x.style.display = "block";
-                    }
-                    setTimeout(function(){
-                    var x = document.getElementById("myDIV");
-                    if (message.toLowerCase() === "low") {
-                        startSpin(1);
+                        wheelSettings = wheelSettingsStream
+                        CheckandRun(user, message);
                         
-                    }else if (message.toLowerCase() === "medium") {
-                        startSpin(2);
-                    }else if (message.toLowerCase() === "high") {
-                        startSpin(3);
-                    }else {
-                        var randomPower = Math.floor(Math.random() * 3) + 1;
-                        startSpin(Number(randomPower));
-                    }
-                }, 2000);
-                    
-                }
-                
 
-            };
+                };
+            }
 
             ComfyJS.Init( TWITCHUSER, OAUTH );
 
+
+            //Set the wheel settings.
+
             // Loads the tick audio sound in to an audio object.
             let audio = new Audio('tick.mp3');
+
+            function CheckandRun(user, message){
+
+                theWheel = new Winwheel({
+                        'outerRadius'     : wheelSettings.outerRadius,
+                        'innerRadius'     : wheelSettings.innerRadius,
+                        'textFontSize'    : wheelSettings.textFontSize,
+                        'textOrientation' : wheelSettings.textOrientation,
+                        'textAlignment'   : wheelSettings.textAlignment,
+                        'numSegments'     : wheelSettings.numSegments,
+                        'segments'        : wheelSettings.segments,
+                        'animation'    : 
+                        {
+                            'type'     : wheelSettings.animation.type,
+                            'duration' : wheelSettings.animation.duration,
+                            'spins'    : wheelSettings.animation.spins,
+                            'callbackFinished' : alertPrize,
+                            'callbackSound'    : playSound,
+                            'soundTrigger'     : wheelSettings.animation.soundTrigger
+                        },
+                        'pins' :
+                        {
+                            'number'     : wheelSettings.pins.number,
+                            'fillStyle'  : wheelSettings.pins.fillStyle,
+                            'outerRadius': wheelSettings.pins.outerRadius
+                        }
+                    });
+
+                redeemerUsername = user
+
+                if (wheelSpinning){
+                    ComfyJS.Say(user + ", the wheel is already spinning, wait your turn! My points now...")
+                }
+
+                var x = document.getElementById("myDIV");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                }
+                setTimeout(function(){
+                var x = document.getElementById("myDIV");
+                if (message.toLowerCase() === "low") {
+                    startSpin(1);
+                    
+                }else if (message.toLowerCase() === "medium") {
+                    startSpin(2);
+                }else if (message.toLowerCase() === "high") {
+                    startSpin(3);
+                }else {
+                    var randomPower = Math.floor(Math.random() * 3) + 1;
+                    startSpin(Number(randomPower));
+                }
+                }, 2000);
+
+            }
 
             // This function is called when the sound is to be played.
             function playSound()
