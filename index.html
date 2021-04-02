@@ -1,0 +1,260 @@
+<!--
+    Winhweel.js wheel of fortune example by Douglas McKechie @ www.dougtesting.net
+    See website for tutorials and other documentation.
+
+    The MIT License (MIT)
+
+    Copyright (c) 2016 Douglas McKechie
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+-->
+<html>
+    <head>
+        <title>Channel Points Wheel of Fortune!</title>
+        <link rel="stylesheet" href="main.css" type="text/css" />
+        <script type="text/javascript" src="Winwheel.min.js"></script>
+        <script src="comfy.min.js"></script>
+        <script src="config.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+    </head>
+    <body>
+        <div id="myDIV" style="display:none">
+            <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <td width="438" height="582" class="the_wheel"  valign="center">
+                    <canvas id="canvas" width="434" height="434">
+                        <p style="color: white" >Sorry, your browser doesn't support canvas. Please try another.</p>
+                    </canvas>
+                </td>
+            </tr>
+        </div>
+        </table>
+        <script>
+            var TWITCHUSER = twitchConfig.TWITCHUSER;
+            var OAUTH = twitchConfig.OAUTH;
+
+            //Store username so the bot can reply...
+            var redeemerUsername;
+
+            // Vars used by the code in this page to do power controls.
+            let wheelSpinning = false;
+            var theWheel
+
+            ComfyJS.onChat = ( user, message, flags, self, extra ) => {
+                //TF2 spin
+                if( flags.customReward &&
+                        extra.customRewardId === channelPointsIDS.TF2 ) {
+
+                    theWheel = new Winwheel({
+                        'outerRadius'     : wheelSettingsTF2.outerRadius,
+                        'innerRadius'     : wheelSettingsTF2.innerRadius,
+                        'textFontSize'    : wheelSettingsTF2.textFontSize,
+                        'textOrientation' : wheelSettingsTF2.textOrientation,
+                        'textAlignment'   : wheelSettingsTF2.textAlignment,
+                        'numSegments'     : wheelSettingsTF2.numSegments,
+                        'segments'        : wheelSettingsTF2.segments,
+                        'animation'    : 
+                        {
+                            'type'     : wheelSettingsTF2.animation.type,
+                            'duration' : wheelSettingsTF2.animation.duration,
+                            'spins'    : wheelSettingsTF2.animation.spins,
+                            'callbackFinished' : alertPrize,
+                            'callbackSound'    : playSound,
+                            'soundTrigger'     : wheelSettingsTF2.animation.soundTrigger
+                        },
+                        'pins' :
+                        {
+                            'number'     : wheelSettingsTF2.pins.number,
+                            'fillStyle'  : wheelSettingsTF2.pins.fillStyle,
+                            'outerRadius': wheelSettingsTF2.pins.outerRadius
+                        }
+                    });
+
+                    redeemerUsername = user
+
+                    if (wheelSpinning){
+                        ComfyJS.Say(user + ", the wheel is already spinning, wait your turn! My points now...")
+                    }
+
+                    var x = document.getElementById("myDIV");
+                    if (x.style.display === "none") {
+                        x.style.display = "block";
+                    }
+                    setTimeout(function(){
+                    var x = document.getElementById("myDIV");
+                    if (message.toLowerCase() === "low") {
+                        startSpin(1);
+                        
+                    }else if (message.toLowerCase() === "medium") {
+                        startSpin(2);
+                    }else if (message.toLowerCase() === "high") {
+                        startSpin(3);
+                    }else {
+                        var randomPower = Math.floor(Math.random() * 3) + 1;
+                        startSpin(Number(randomPower));
+                    }
+                }, 2000);
+                    
+                }
+
+                //Stream wide spin
+                if( flags.customReward &&
+                        extra.customRewardId === channelPointsIDS.StreamWide ) {
+
+                    theWheel = new Winwheel({
+                        'outerRadius'     : wheelSettingsStream.outerRadius,
+                        'innerRadius'     : wheelSettingsStream.innerRadius,
+                        'textFontSize'    : wheelSettingsStream.textFontSize,
+                        'textOrientation' : wheelSettingsStream.textOrientation,
+                        'textAlignment'   : wheelSettingsStream.textAlignment,
+                        'numSegments'     : wheelSettingsStream.numSegments,
+                        'segments'        : wheelSettingsStream.segments,
+                        'animation'    : 
+                        {
+                            'type'     : wheelSettingsStream.animation.type,
+                            'duration' : wheelSettingsStream.animation.duration,
+                            'spins'    : wheelSettingsStream.animation.spins,
+                            'callbackFinished' : alertPrize,
+                            'callbackSound'    : playSound,
+                            'soundTrigger'     : wheelSettingsStream.animation.soundTrigger
+                        },
+                        'pins' :
+                        {
+                            'number'     : wheelSettingsStream.pins.number,
+                            'fillStyle'  : wheelSettingsStream.pins.fillStyle,
+                            'outerRadius': wheelSettingsStream.pins.outerRadius
+                        }
+                    });
+
+                    redeemerUsername = user
+
+                    if (wheelSpinning){
+                        ComfyJS.Say(user + ", the wheel is already spinning, wait your turn! My points now...")
+                    }
+
+                    var x = document.getElementById("myDIV");
+                    if (x.style.display === "none") {
+                        x.style.display = "block";
+                    }
+                    setTimeout(function(){
+                    var x = document.getElementById("myDIV");
+                    if (message.toLowerCase() === "low") {
+                        startSpin(1);
+                        
+                    }else if (message.toLowerCase() === "medium") {
+                        startSpin(2);
+                    }else if (message.toLowerCase() === "high") {
+                        startSpin(3);
+                    }else {
+                        var randomPower = Math.floor(Math.random() * 3) + 1;
+                        startSpin(Number(randomPower));
+                    }
+                }, 2000);
+                    
+                }
+                
+
+            };
+
+            ComfyJS.Init( TWITCHUSER, OAUTH );
+
+            // Loads the tick audio sound in to an audio object.
+            let audio = new Audio('tick.mp3');
+
+            // This function is called when the sound is to be played.
+            function playSound()
+            {
+                // Stop and rewind the sound if it already happens to be playing.
+                audio.pause();
+                audio.currentTime = 0;
+                audio.volume = audioVolume;
+
+                // Play the sound.
+                audio.play();
+            }
+
+            // -------------------------------------------------------
+            // Click handler for spin button.
+            // -------------------------------------------------------
+            function startSpin(wheelPower)
+            {
+                // Ensure that spinning can't be clicked again while already running.
+                if (wheelSpinning == false) {
+                    // Based on the power level selected adjust the number of spins for the wheel, the more times is has
+                    // to rotate with the duration of the animation the quicker the wheel spins.
+                    if (wheelPower == 1) {
+                        theWheel.animation.spins = 3;
+                    } else if (wheelPower == 2) {
+                        theWheel.animation.spins = 6;
+                    } else if (wheelPower == 3) {
+                        theWheel.animation.spins = 10;
+                    }
+
+
+                    // Begin the spin animation by calling startAnimation on the wheel object.
+                    theWheel.startAnimation();
+
+                    // Set to true so that power can't be changed and spin button re-enabled during
+                    // the current animation. The user will have to reset before spinning again.
+                    wheelSpinning = true;
+                }
+            }
+
+            // -------------------------------------------------------
+            // Function for reset button.
+            // -------------------------------------------------------
+            function resetWheel()
+            {
+                theWheel.stopAnimation(false);  // Stop the animation, false as param so does not call callback function.
+                theWheel.rotationAngle = 0;     // Re-set the wheel angle to 0 degrees.
+                theWheel.draw();                // Call draw to render changes to the wheel.
+
+                //document.getElementById('pw1').className = "";  // Remove all colours from the power level indicators.
+                //document.getElementById('pw2').className = "";
+                //document.getElementById('pw3').className = "";
+
+                wheelSpinning = false;          // Reset to false to power buttons and spin can be clicked again.
+            }
+
+            // -------------------------------------------------------
+            // Called when the spin animation has finished by the callback feature of the wheel because I specified callback in the parameters.
+            // -------------------------------------------------------
+            function alertPrize(indicatedSegment)
+            {
+                // Just alert to the user what happened.
+                // In a real project probably want to do something more interesting than this with the result.
+                if (indicatedSegment.text == 'LOOSE TURN') {
+                    ComfyJS.Say('Sorry but you loose a turn.');
+                } else if (indicatedSegment.text == 'Something Else') {
+                    ComfyJS.Say('Oh no, you have gone BANKRUPT!');
+                } else {
+                    ComfyJS.Say(redeemerUsername + ", the wheel landed on " + indicatedSegment.text);
+                }
+                setTimeout(function(){
+                    var x = document.getElementById("myDIV");
+                    if (x.style.display === "block") {
+                        x.style.display = "none";
+                    }
+                    resetWheel();
+                }, 2000);
+                
+            }
+        </script>
+    </body>
+</html>
