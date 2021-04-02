@@ -15,12 +15,20 @@ body
     font-family: arial;
 }
 
+
 /* Sets the background image for the wheel */
 td.the_wheel
 {
     background-image: url(./wheel_back.png);
     background-position: center;
     background-repeat: none;
+}
+
+.winner_text
+{
+    text-align: center;
+    color: red;
+    font-size: 35px;
 }
 
 /* Do some css reset on selected elements */

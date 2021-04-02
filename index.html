@@ -34,17 +34,19 @@
         <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
     </head>
     <body>
-        <div id="myDIV" style="display:none">
+        <div id="myDIV" style="display:none; width:438;">
             <table cellpadding="0" cellspacing="0" border="0">
-            <tr>
-                <td width="438" height="582" class="the_wheel"  valign="center">
-                    <canvas id="canvas" width="434" height="434">
-                        <p style="color: white" >Sorry, your browser doesn't support canvas. Please try another.</p>
-                    </canvas>
-                </td>
-            </tr>
+                <tr>
+                    <td width="438" height="500" class="the_wheel"  valign="center">
+                        <canvas id="canvas" width="434" height="434">
+                            <p style="color: white" >Sorry, your browser doesn't support canvas. Please try another.</p>
+                        </canvas>
+                    </td>
+                </tr>
+            </table>
+            <div id="winner" class="winner_text"></div>
         </div>
-        </table>
+
         <script>
             var TWITCHUSER = twitchConfig.TWITCHUSER;
             var OAUTH = twitchConfig.OAUTH;
@@ -198,6 +200,9 @@
                 if (wheelSpinning == false) {
                     // Based on the power level selected adjust the number of spins for the wheel, the more times is has
                     // to rotate with the duration of the animation the quicker the wheel spins.
+                    var winnerText = redeemerUsername + " is spinning the wheel!"
+                    document.getElementById('winner').innerHTML = winnerText;
+
                     if (wheelPower == 1) {
                         theWheel.animation.spins = 3;
                     } else if (wheelPower == 2) {
@@ -244,7 +249,9 @@
                 } else if (indicatedSegment.text == 'Something Else') {
                     ComfyJS.Say('Oh no, you have gone BANKRUPT!');
                 } else {
-                    ComfyJS.Say(redeemerUsername + ", the wheel landed on " + indicatedSegment.text);
+                    var winnerText = redeemerUsername + ", the wheel landed on " + indicatedSegment.text
+                    ComfyJS.Say(winnerText);
+                    document.getElementById('winner').innerHTML = winnerText;
                 }
                 setTimeout(function(){
                     var x = document.getElementById("myDIV");
@@ -252,7 +259,7 @@
                         x.style.display = "none";
                     }
                     resetWheel();
-                }, 2000);
+                }, 5000);
                 
             }
         </script>
