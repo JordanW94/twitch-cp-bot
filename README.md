@@ -2,7 +2,7 @@
 Twitch channel points wheel of fortune
 
 ## Description
-Using the Winwheel.js and ComfyJS, the wheel is activated by certain channel point redemtions.
+Using the Winwheel.js and ComfyJS, the wheel is activated by certain channel point redemptions.
 
 Find information on how to configure the Winwheel.js settings found in config.js here: https://github.com/zarocknz/javascript-winwheel
 
@@ -48,8 +48,8 @@ Finally the wheel settings, which can be found here: https://github.com/zarocknz
 
 OBS Settings:
 - Add a Browser source
-- Tick local file
-- Change the height and width to your usual resolution. e.g 1920x1080
+- Tick local file and navigate to the index.html
+- Change the width and height to your usual resolution. e.g 1920x1080
 - Set the CSS to the below
 
 ```CSS
