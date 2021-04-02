@@ -1,8 +1,10 @@
 ## twitch-cp-wheel-of-fortune
-Twitch channel points wheel of fortune
+Twitch channel points wheel of fortune and Song Request
 
 ## Description
 Using the Winwheel.js and ComfyJS, the wheel is activated by certain channel point redemptions.
+
+Added functionality for song request too.
 
 Find information on how to configure the Winwheel.js settings found in config.js here: https://github.com/zarocknz/javascript-winwheel
 
@@ -35,16 +37,21 @@ This can vary from 0-1; configure to your liking.
 ```javascript
 var channelPointsIDS = {
     'TF2' : '49429337-fd15-41ac-a2ae-5848690a13ae',
-    'StreamWide': '3e1eabeb-24d6-4404-870d-0c14489c1156'
+    'StreamWide': '3e1eabeb-24d6-4404-870d-0c14489c1156',
+    'SongRequest': '3f50bc54-2f03-491d-a635-c5de58ad2731'
 }
 ```
 
 The Channel Points ID can be found with this url: https://www.instafluff.tv/TwitchCustomRewardID/?channel=YOUR-TWITCH-USERNAME-HERE 
 - Replace `YOUR-TWITCH-USERNAME-HERE` with... you guessed it! Your twitch username.
 - Go back to your channel and redeem a channel points reward, make sure you have `Require Viewer to Enter Text` enabled.
-- That website will return the ID for that reward, paste that into one of the above keys, TF2 or StreamWide.
+- That website will return the ID for that reward, paste that into one of the above keys, TF2, StreamWide or SongRequest.
+
+Song request will just make your bot say !sr message-from-user-here. So make sure you have song request set to Moderators only and Mod your bot.
 
 Finally the wheel settings, which can be found here: https://github.com/zarocknz/javascript-winwheel
+
+If you want to disable any, just leave the key as '' or add the channel points id and control the enabling/disabling directly from twitch.
 
 OBS Settings:
 - Add a Browser source

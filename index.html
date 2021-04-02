@@ -59,6 +59,11 @@
             var theWheel
 
             ComfyJS.onChat = ( user, message, flags, self, extra ) => {
+                if( flags.customReward &&
+                        extra.customRewardId === channelPointsIDS.SongRequest ) {
+
+                    ComfyJS.Say( "!sr " + message );
+                }
                 //TF2 spin
                 if( flags.customReward &&
                         extra.customRewardId === channelPointsIDS.TF2 ) {
