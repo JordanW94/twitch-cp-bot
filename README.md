@@ -53,6 +53,18 @@ Finally the wheel settings, which can be found here: https://github.com/zarocknz
 
 If you want to disable any, just leave the key as '' or add the channel points id and control the enabling/disabling directly from twitch.
 
+The text a user can enter in the channel points reward relates to the power of spin:
+- Low
+- Medium
+- High
+- Anything they want: This will pick randomly out of the 3 above.
+
+## Example Channel Points description
+
+```
+Choose the spin power by typing in Low, Medium or High. If you type anything other than that it will randomly pick a power for you.
+```
+
 OBS Settings:
 - Add a Browser source
 - Tick local file and navigate to the index.html
