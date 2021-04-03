@@ -114,7 +114,7 @@ The Channel Points ID can be found with this url: https://www.instafluff.tv/Twit
 - Go back to your channel and redeem a channel points reward, make sure you have `Require Viewer to Enter Text` enabled.
 - That website will return the ID for that reward, use that as the key for a wheel config like in the example above.
 
-Where you see the Channel Points ID above in WheelConfig is where you will need to paste the ID for the wheel to be activated for that certain CP reward.
+Where you see the Channel Points ID above in wheelConfig is where you will need to paste the ID for the wheel to be activated for that certain CP reward.
 
 I've made it so you can create as many different wheel configurations as you want. You simple copy a completed wheel configuration above and alerter the Channel Points ID.
 
