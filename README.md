@@ -116,7 +116,7 @@ The Channel Points ID can be found with this url: https://www.instafluff.tv/Twit
 
 Where you see the Channel Points ID above in wheelConfig is where you will need to paste the ID for the wheel to be activated for that certain CP reward.
 
-I've made it so you can create as many different wheel configurations as you want. You simple copy a completed wheel configuration above and alerter the Channel Points ID.
+I've made it so you can create as many different wheel configurations as you want. You simple copy a completed wheel configuration above and alter the Channel Points ID.
 
 Finally the actual wheel settings, which can be found here: https://github.com/zarocknz/javascript-winwheel or just work it out from the example.
 
