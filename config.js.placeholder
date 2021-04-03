@@ -15,7 +15,7 @@ var channelPointsIDS = {
 // Modular Wheel config.
 var wheelConfig = {
 // Start of wheel config
-    '49429337-fd15-41ac-a2ae-5848690a13ae': {    // Change this to your Channel Points ID
+    '49429337-fd15-41ac-a2ae-5848690a13ae': {
         'outerRadius'     : 212,        // Set outer radius so wheel fits inside the background.
         'innerRadius'     : 75,         // Make wheel hollow so segments don't go all way to center.
         'textFontSize'    : 24,         // Set default font size for the segments.
@@ -64,7 +64,7 @@ var wheelConfig = {
     
     }
 
-    ,'3e1eabeb-24d6-4404-870d-0c14489c1156': {    // Change this to your Channel Points ID
+    ,'3e1eabeb-24d6-4404-870d-0c14489c1156': {
         'outerRadius'     : 212,        // Set outer radius so wheel fits inside the background.
         'innerRadius'     : 75,         // Make wheel hollow so segments don't go all way to center.
         'textFontSize'    : 24,         // Set default font size for the segments.
@@ -98,7 +98,132 @@ var wheelConfig = {
     
     }
 
-    ,'Place-Holder-For-Another-Wheel': {    // Change this to your Channel Points ID
+    ,'3f50bc54-2f03-491d-a635-c5de58ad2731': {   //Guess the number example.
+        'outerRadius'     : 212,        // Set outer radius so wheel fits inside the background.
+        'innerRadius'     : 75,         // Make wheel hollow so segments don't go all way to center.
+        'textFontSize'    : 24,         // Set default font size for the segments.
+        'textOrientation' : 'vertical', // Make text vertial so goes down from the outside of wheel.
+        'textAlignment'   : 'outer',    // Align text to outside of wheel.
+        'numSegments'     : 100,         // Specify number of segments.
+        'segments'        :             // Define segments including colour and text.
+        [                               // font size and test colour overridden on backrupt segments.
+            {'fillStyle' : '#FF0000', 'text' : '1', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '2', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '3', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '4', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '5', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '6', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '7', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '8', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '9', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '10', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '11', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '12', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '13', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '14', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '15', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '16', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '17', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '18', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '19', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '20', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '21', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '22', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '23', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '24', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '25', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '26', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '27', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '28', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '29', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '30', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '31', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '32', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '33', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '34', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '35', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '36', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '37', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '38', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '39', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '40', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '41', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '42', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '43', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '44', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '45', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '46', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '47', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '48', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '49', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '50', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '51', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '52', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '53', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '54', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '55', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '56', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '57', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '58', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '59', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '60', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '61', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '62', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '63', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '64', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '65', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '66', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '67', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '68', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '69', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '70', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '71', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '72', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '73', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '74', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '75', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '76', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '77', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '78', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '79', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '80', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '81', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '82', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '83', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '84', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '85', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '86', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '87', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '88', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '89', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '90', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '91', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '92', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '93', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '94', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '95', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '96', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '97', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '98', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FF0000', 'text' : '99', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#FFD700', 'text' : '100', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'}
+        ],
+        'animation' :           // Specify the animation to use.
+        {
+            'type'     : 'spinToStop',
+            'duration' : 10,    // Duration in seconds.
+            'spins'    : 5     // Default number of complete spins.
+        },
+        'pins' :
+        {
+            'number'     : 100,
+            'fillStyle'  : 'silver',
+            'outerRadius': 4
+        }
+    
+    }
+
+    ,'Place-Holder-For-Another-Wheel': {
         'outerRadius'     : 212,        // Set outer radius so wheel fits inside the background.
         'innerRadius'     : 75,         // Make wheel hollow so segments don't go all way to center.
         'textFontSize'    : 24,         // Set default font size for the segments.
