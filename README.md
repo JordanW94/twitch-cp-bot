@@ -34,7 +34,7 @@ var audioVolume = 0.1;
 This can vary from 0-1; configure to your liking.
 
 ## Song Request Channel Points ID
-```
+```javascript
 var channelPointsIDS = {
     'SongRequest': '3f50bc54-2f03-491d-a635-c5de58ad2731'
 }
