@@ -91,7 +91,7 @@ var wheelConfig = {
         },
         'pins' :
         {
-            'number'     : 24,
+            'number'     : 9,
             'fillStyle'  : 'silver',
             'outerRadius': 4
         }
