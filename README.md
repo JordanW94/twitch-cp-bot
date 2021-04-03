@@ -33,12 +33,79 @@ var audioVolume = 0.1;
 
 This can vary from 0-1; configure to your liking.
 
-## Channel Points IDs Example
-```javascript
+## Song Request Channel Points ID
+```
 var channelPointsIDS = {
-    'TF2' : '49429337-fd15-41ac-a2ae-5848690a13ae',
-    'StreamWide': '3e1eabeb-24d6-4404-870d-0c14489c1156',
     'SongRequest': '3f50bc54-2f03-491d-a635-c5de58ad2731'
+}
+```
+
+Follow below on how to get your Channel Points ID.
+Song request will just make your bot say !sr message-from-user-here. So make sure you have song request set to Moderators only and Mod your bot.
+
+## Bind the wheel to a Channel Points Reward
+```javascript
+// Modular Wheel config.
+var wheelConfig = {
+// Start of wheel config
+    '49429337-fd15-41ac-a2ae-5848690a13ae': {    // Change this to your Channel Points ID
+        'outerRadius'     : 212,        // Set outer radius so wheel fits inside the background.
+        'innerRadius'     : 75,         // Make wheel hollow so segments don't go all way to center.
+        'textFontSize'    : 24,         // Set default font size for the segments.
+        'textOrientation' : 'vertical', // Make text vertial so goes down from the outside of wheel.
+        'textAlignment'   : 'outer',    // Align text to outside of wheel.
+        'numSegments'     : 24,         // Specify number of segments.
+        'segments'        :             // Define segments including colour and text.
+        [                               // font size and test colour overridden on backrupt segments.
+            {'fillStyle' : '#ee1c24', 'text' : '300'},
+            {'fillStyle' : '#3cb878', 'text' : '450'},
+            {'fillStyle' : '#f6989d', 'text' : '600'},
+            {'fillStyle' : '#00aef0', 'text' : '750'},
+            {'fillStyle' : '#f26522', 'text' : '500'},
+            {'fillStyle' : '#000000', 'text' : 'BANKRUPT', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#e70697', 'text' : '3000'},
+            {'fillStyle' : '#fff200', 'text' : '600'},
+            {'fillStyle' : '#f6989d', 'text' : '700'},
+            {'fillStyle' : '#ee1c24', 'text' : '350'},
+            {'fillStyle' : '#3cb878', 'text' : '500'},
+            {'fillStyle' : '#f26522', 'text' : '800'},
+            {'fillStyle' : '#a186be', 'text' : '300'},
+            {'fillStyle' : '#fff200', 'text' : '400'},
+            {'fillStyle' : '#00aef0', 'text' : '650'},
+            {'fillStyle' : '#ee1c24', 'text' : '1000'},
+            {'fillStyle' : '#f6989d', 'text' : '500'},
+            {'fillStyle' : '#f26522', 'text' : '400'},
+            {'fillStyle' : '#3cb878', 'text' : '900'},
+            {'fillStyle' : '#000000', 'text' : 'BANKRUPT', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+            {'fillStyle' : '#a186be', 'text' : '600'},
+            {'fillStyle' : '#fff200', 'text' : '700'},
+            {'fillStyle' : '#00aef0', 'text' : '800'},
+            {'fillStyle' : '#ffffff', 'text' : 'LOOSE TURN', 'textFontSize' : 12}
+        ],
+        'animation' :           // Specify the animation to use.
+        {
+            'type'     : 'spinToStop',
+            'duration' : 10,    // Duration in seconds.
+            'spins'    : 3     // Default number of complete spins.
+        },
+        'pins' :
+        {
+            'number'     : 24,
+            'fillStyle'  : 'silver',
+            'outerRadius': 4
+        }
+    
+    }
+
+    ,'3e1eabeb-24d6-4404-870d-0c14489c1156': {    // Change this to your Channel Points ID
+            //Wheel Config here. Like above
+    }
+
+    ,'Place-Holder-For-Another-Wheel': {    // Change this to your Channel Points ID
+            //Wheel Config here. Like above
+    }
+
+// End of wheel config
 }
 ```
 
@@ -47,13 +114,15 @@ The Channel Points ID can be found with this url: https://www.instafluff.tv/Twit
 - Go back to your channel and redeem a channel points reward, make sure you have `Require Viewer to Enter Text` enabled.
 - That website will return the ID for that reward, paste that into one of the above keys, TF2, StreamWide or SongRequest.
 
-Song request will just make your bot say !sr message-from-user-here. So make sure you have song request set to Moderators only and Mod your bot.
+Where you see the Channel Points ID above in WheelConfig is where you will need to paste the ID for the wheel to be activated for that certain CP reward.
 
-Finally the wheel settings, which can be found here: https://github.com/zarocknz/javascript-winwheel
+I've made it so you can create as many different wheel configurations as you want. You simple copy a completed wheel configuration above and alerter the Channel Points ID.
 
-If you want to disable any, just leave the key as '' or add the channel points id and control the enabling/disabling directly from twitch.
+Finally the actual wheel settings, which can be found here: https://github.com/zarocknz/javascript-winwheel or just work it out from the example.
 
-The text a user can enter in the channel points reward relates to the power of spin:
+If you want to disable any, just leave the key as 'disabled' or add the Channel Points ID and control the enabling/disabling directly from Twitch.
+
+The text a user can enter in the Channel Points reward relates to the power of spin:
 - Low
 - Medium
 - High
