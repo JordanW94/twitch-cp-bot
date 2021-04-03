@@ -112,7 +112,7 @@ var wheelConfig = {
 The Channel Points ID can be found with this url: https://www.instafluff.tv/TwitchCustomRewardID/?channel=YOUR-TWITCH-USERNAME-HERE 
 - Replace `YOUR-TWITCH-USERNAME-HERE` with... you guessed it! Your twitch username.
 - Go back to your channel and redeem a channel points reward, make sure you have `Require Viewer to Enter Text` enabled.
-- That website will return the ID for that reward, paste that into one of the above keys, TF2, StreamWide or SongRequest.
+- That website will return the ID for that reward, use that as the key for a wheel config like in the example above.
 
 Where you see the Channel Points ID above in WheelConfig is where you will need to paste the ID for the wheel to be activated for that certain CP reward.
 
