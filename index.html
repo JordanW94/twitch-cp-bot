@@ -54,48 +54,14 @@
         <script>
             var TWITCHUSER = twitchConfig.TWITCHUSER;
             var OAUTH = twitchConfig.OAUTH;
-
-
-            //var message = new SpeechSynthesisUtterance($("#text").val());
-            var voices = speechSynthesis.getVoices();
-
-            var text = "Test message"
-            var message = new SpeechSynthesisUtterance(text);
-
-
-            speechSynthesis.speak(message);
-
-            $("input").on("change", function () {
-                console.log($(this).attr("id"), $(this).val());
-                message[$(this).attr("id")] = $(this).val();
-            });
-
-            $("select").on("change", function () {
-                message.voice = voices[$(this).val()];
-            });
-
-            $("button").on("click", function () {
-                speechSynthesis.speak(message);
-            });
-
-            // Hack around voices bug
-            var interval = setInterval(function () {
-                voices = speechSynthesis.getVoices();
-                if (voices.length) clearInterval(interval); else return;
-
-                for (var i = 0; i < voices.length; i++) {
-                    $("select").append("<option value=\"" + i + "\">" + voices[i].name + "</option>");
-                }
-            }, 10);
             
-
-
             //Store username so the bot can reply...
             var redeemerUsername;
 
             // Vars used by the code in this page to do power controls.
             let wheelSpinning = false;
             var wheelSettings;
+            var playRanSoundSettings;
             let theWheel;
 
             ComfyJS.onChat = ( user, message, flags, self, extra ) => {
@@ -115,16 +81,10 @@
 
 
                 if( flags.customReward &&
-                        ttsConfig[extra.customRewardId] !== undefined ) {
+                        randomSoundConfig[extra.customRewardId] !== undefined ) {
 
-                        if (message.includes(ttsConfig[extra.customRewardId].restrictedWords)){
-
-                            ComfyJS.Say( '@'+ user + ' said a naughty word in that TTS!' );
-                        } else {
-
-                            initiateTTS(message);
-                        }
-                                
+                            playRanSoundSettings = randomSoundConfig[extra.customRewardId]
+                            playRandomSound();
                 }
             }
              
@@ -132,16 +92,19 @@
 
             ComfyJS.Init( TWITCHUSER, OAUTH );
 
+            // Play random sound
 
-            function initiateTTS(message){
-                var voices = speechSynthesis.getVoices();
+            function playRandomSound(){
+                var randomSound = Math.floor(Math.random() * playRanSoundSettings.maxAmount) + 1;
+                var location = playRanSoundSettings.soundsLocation
+                var randomAudio = new Audio(location + randomSound + '.mp3')
 
-                var speech = new SpeechSynthesisUtterance(message);
+                randomAudio.currentTime = 0;
+                randomAudio.volume = playRanSoundSettings.audioVolume;
 
-                speechSynthesis.speak(speech);
-
+                // Play the sound.
+                randomAudio.play();
             }
-
 
             //Set the wheel settings.
 
