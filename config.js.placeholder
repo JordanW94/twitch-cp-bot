@@ -1,21 +1,44 @@
 // Twitch channel to initiate the bot and the OAUTH token for the bot
 var twitchConfig = {
-    TWITCHUSER: "", // The channel you want the bot to watch, e.g Hoviis
-    OAUTH: "" //The OAUTH token - follow the tutorial in the README
+    TWITCHUSER: "",
+    OAUTH: "" //This is sensitive, don't share this with anyone.
 }
 
-// Tick volume
-var audioVolume = 0.1;
-
-// Song Request Channel Points ID
-var channelPointsIDS = {
-    'SongRequest': '3f50bc54-2f03-491d-a635-c5de58ad2731'
+// Song Request Config
+var srConfig = {
+// Start of Song Request config
+    '6b5bc459-5668-4395-a79a-4c9416dfd072' : {
+        'enabled' : true // This doesn't actually do anything, just something to fill the object
+    }
+// End of Song Request config - if you want another config, paste above this line.
 }
+
+
+
+// Random Sound config
+var randomSoundConfig = {
+// Start of Random Sound config
+    'b231f2cd-fa22-42f6-8aa2-c852728b51aa' : {
+        'soundsLocation': 'H:/example/twitch-bot-wheeloffortune/sounds/coolsounds/',
+        'maxAmount': 3,
+        'audioVolume': 0.1
+    }
+    ,'02b6ffee-99df-45df-80bd-6a6d28e80e2a' : {
+        'soundsLocation': 'H:/example/twitch-bot-wheeloffortune/sounds/MOREcoolsounds/',
+        'maxAmount': 3,
+        'audioVolume': 0.1
+    }
+// End of Random Sound config - if you want another config, paste above this line.
+}
+
+
+
 
 // Modular Wheel config.
 var wheelConfig = {
 // Start of wheel config
     '49429337-fd15-41ac-a2ae-5848690a13ae': {
+        'audioVolume'     : 0.1,        // Volume for the tick.mp3
         'outerRadius'     : 212,        // Set outer radius so wheel fits inside the background.
         'innerRadius'     : 75,         // Make wheel hollow so segments don't go all way to center.
         'textFontSize'    : 24,         // Set default font size for the segments.
@@ -65,6 +88,7 @@ var wheelConfig = {
     }
 
     ,'3e1eabeb-24d6-4404-870d-0c14489c1156': {
+        'audioVolume'     : 0.1,        // Volume for the tick.mp3
         'outerRadius'     : 212,        // Set outer radius so wheel fits inside the background.
         'innerRadius'     : 75,         // Make wheel hollow so segments don't go all way to center.
         'textFontSize'    : 24,         // Set default font size for the segments.
@@ -99,6 +123,7 @@ var wheelConfig = {
     }
 
     ,'3f50bc54-2f03-491d-a635-c5de58ad2731': {   //Guess the number example.
+        'audioVolume'     : 0.1,        // Volume for the tick.mp3
         'outerRadius'     : 212,        // Set outer radius so wheel fits inside the background.
         'innerRadius'     : 75,         // Make wheel hollow so segments don't go all way to center.
         'textFontSize'    : 24,         // Set default font size for the segments.
@@ -224,6 +249,7 @@ var wheelConfig = {
     }
 
     ,'Place-Holder-For-Another-Wheel': {
+        'audioVolume'     : 0.1,        // Volume for the tick.mp3
         'outerRadius'     : 212,        // Set outer radius so wheel fits inside the background.
         'innerRadius'     : 75,         // Make wheel hollow so segments don't go all way to center.
         'textFontSize'    : 24,         // Set default font size for the segments.
@@ -257,5 +283,5 @@ var wheelConfig = {
     
     }
 
-// End of wheel config
+// End of wheel config - if you want another config, paste above this line.
 }

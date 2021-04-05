@@ -1,4 +1,4 @@
-## twitch-cp-wheel-of-fortune
+## twitch-cp-bot
 Twitch channel points wheel of fortune and Song Request
 
 ## Description
@@ -12,6 +12,12 @@ Find information on how to configure the Winwheel.js settings found in config.js
 
  - Clone the repo
  - Rename config.js.placeholder to config.js and edit accordingly.
+
+ ## Get Channel Points Reward ID
+ The Channel Points ID can be found with this url: https://www.instafluff.tv/TwitchCustomRewardID/?channel=YOUR-TWITCH-USERNAME-HERE 
+- Replace `YOUR-TWITCH-USERNAME-HERE` with... you guessed it! Your twitch username.
+- Go back to your channel and redeem a channel points reward, make sure you have `Require Viewer to Enter Text` enabled.
+- That website will return the ID for that reward, use that as the key for a config like in the examples below.
  
  
 ## Twitch Config Example
@@ -35,13 +41,49 @@ This can vary from 0-1; configure to your liking.
 
 ## Song Request Channel Points ID
 ```javascript
-var channelPointsIDS = {
-    'SongRequest': '3f50bc54-2f03-491d-a635-c5de58ad2731'
+// Song Request Channel Points ID
+var srConfig = {
+    '6b5bc459-5668-4395-a79a-4c9416dfd072' : {
+        'enabled' : true // This doesn't actually do anything, just something to fill the object.
+    }
+    ,'PLACE-HOLDER-FOR-ANOTHER-REWARD' : {
+        'enabled' : true // This doesn't actually do anything, just something to fill the object.
+    }
 }
 ```
 
 Follow below on how to get your Channel Points ID.
 Song request will just make your bot say !sr message-from-user-here. So make sure you have song request set to Moderators only and Mod your bot.
+I've made it so you can make as many as you want, follow the template above or/and in the config.js.placeholder
+
+## Random Sound Config
+
+```javascript
+var randomSoundConfig = {
+    'b231f2cd-fa22-42f6-8aa2-c852728b51aa' : {
+        'soundsLocation': 'H:/location-to/twitch-bot-wheeloffortune/sounds/coolsounds/', //Location to the sounds, make sure you have the last /
+        'maxAmount': 3, // This is the max amount of sounds in that directory. The sounds need to be named from 1-You max amount.
+        'audioVolume': 0.1 // Volume for the sounds to be played at.
+    }
+    ,'PLACE-HOLDER-FOR-ANOTHER-REWARD' : {
+        'soundsLocation': 'H:/location-to/twitch-bot-wheeloffortune/sounds/morecoolsounds/',
+        'maxAmount': 3,
+        'audioVolume': 0.1
+    }
+}
+```
+The random sound player will randomly pick a number from 1 to your set maxAmount, e.g 1-100. 
+
+Keys:
+- Main object key is your Channel Points Reward ID.
+- soundsLocation: This is where all your mp3s will be found.
+- maxAmount: The max amount of sounds in the directory you've stated. They are also all named from 1-maxAmount + .mp3
+- audioVolume: The volume you want the sounds to play at.
+
+Rules:
+- All files must be named from 1 - Your maxAmount.
+- They NEED to be mp3, the bot only reads .mp3 file extensions.
+- I've made it so you can make as many as you want, follow the template above or/and in the config.js.placeholder
 
 ## Bind the wheel to a Channel Points Reward
 ```javascript
@@ -49,6 +91,7 @@ Song request will just make your bot say !sr message-from-user-here. So make sur
 var wheelConfig = {
 // Start of wheel config
     '49429337-fd15-41ac-a2ae-5848690a13ae': {    // Change this to your Channel Points ID
+        'audioVolume'     : 0.1,        // Volume
         'outerRadius'     : 212,        // Set outer radius so wheel fits inside the background.
         'innerRadius'     : 75,         // Make wheel hollow so segments don't go all way to center.
         'textFontSize'    : 24,         // Set default font size for the segments.
@@ -109,11 +152,6 @@ var wheelConfig = {
 }
 ```
 
-The Channel Points ID can be found with this url: https://www.instafluff.tv/TwitchCustomRewardID/?channel=YOUR-TWITCH-USERNAME-HERE 
-- Replace `YOUR-TWITCH-USERNAME-HERE` with... you guessed it! Your twitch username.
-- Go back to your channel and redeem a channel points reward, make sure you have `Require Viewer to Enter Text` enabled.
-- That website will return the ID for that reward, use that as the key for a wheel config like in the example above.
-
 Where you see the Channel Points ID above in wheelConfig is where you will need to paste the ID for the wheel to be activated for that certain CP reward.
 
 I've made it so you can create as many different wheel configurations as you want. You simple copy a completed wheel configuration above and alter the Channel Points ID.
@@ -128,13 +166,8 @@ The text a user can enter in the Channel Points reward relates to the power of s
 - High
 - Anything they want: This will pick randomly out of the 3 above.
 
-## Example Channel Points description
+## OBS Setup
 
-```
-Choose the spin power by typing in Low, Medium or High. If you type anything other than that it will randomly pick a power for you.
-```
-
-OBS Settings:
 - Add a Browser source
 - Tick local file and navigate to the index.html
 - Change the width and height to your usual resolution. e.g 1920x1080
