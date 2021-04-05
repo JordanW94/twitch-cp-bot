@@ -32,8 +32,12 @@
         <script src="comfy.min.js"></script>
         <script src="config.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+        <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
     </head>
-    <body>
+    <body>   
         <div id="myDIV" style="display:none; width:438;">
             <table cellpadding="0" cellspacing="0" border="0">
                 <tr>
@@ -51,6 +55,41 @@
             var TWITCHUSER = twitchConfig.TWITCHUSER;
             var OAUTH = twitchConfig.OAUTH;
 
+
+            //var message = new SpeechSynthesisUtterance($("#text").val());
+            var voices = speechSynthesis.getVoices();
+
+            var text = "Test message"
+            var message = new SpeechSynthesisUtterance(text);
+
+
+            speechSynthesis.speak(message);
+
+            $("input").on("change", function () {
+                console.log($(this).attr("id"), $(this).val());
+                message[$(this).attr("id")] = $(this).val();
+            });
+
+            $("select").on("change", function () {
+                message.voice = voices[$(this).val()];
+            });
+
+            $("button").on("click", function () {
+                speechSynthesis.speak(message);
+            });
+
+            // Hack around voices bug
+            var interval = setInterval(function () {
+                voices = speechSynthesis.getVoices();
+                if (voices.length) clearInterval(interval); else return;
+
+                for (var i = 0; i < voices.length; i++) {
+                    $("select").append("<option value=\"" + i + "\">" + voices[i].name + "</option>");
+                }
+            }, 10);
+            
+
+
             //Store username so the bot can reply...
             var redeemerUsername;
 
@@ -62,7 +101,7 @@
             ComfyJS.onChat = ( user, message, flags, self, extra ) => {
 
                 if( flags.customReward &&
-                        extra.customRewardId === channelPointsIDS.SongRequest ) {
+                    srConfig[extra.customRewardId] !== undefined ) {
 
                     ComfyJS.Say( "!sr " + message );
                 }
@@ -73,9 +112,35 @@
                         wheelSettings = wheelConfig[extra.customRewardId]
                         CheckandRun(user, message);
                 };
+
+
+                if( flags.customReward &&
+                        ttsConfig[extra.customRewardId] !== undefined ) {
+
+                        if (message.includes(ttsConfig[extra.customRewardId].restrictedWords)){
+
+                            ComfyJS.Say( '@'+ user + ' said a naughty word in that TTS!' );
+                        } else {
+
+                            initiateTTS(message);
+                        }
+                                
+                }
             }
+             
+            
 
             ComfyJS.Init( TWITCHUSER, OAUTH );
+
+
+            function initiateTTS(message){
+                var voices = speechSynthesis.getVoices();
+
+                var speech = new SpeechSynthesisUtterance(message);
+
+                speechSynthesis.speak(speech);
+
+            }
 
 
             //Set the wheel settings.
@@ -123,8 +188,7 @@
                 setTimeout(function(){
                 var x = document.getElementById("myDIV");
                 if (message.toLowerCase() === "low") {
-                    startSpin(1);
-                    
+                    startSpin(1);  
                 }else if (message.toLowerCase() === "medium") {
                     startSpin(2);
                 }else if (message.toLowerCase() === "high") {
@@ -143,7 +207,7 @@
                 // Stop and rewind the sound if it already happens to be playing.
                 audio.pause();
                 audio.currentTime = 0;
-                audio.volume = audioVolume;
+                audio.volume = wheelSettings.audioVolume;
 
                 // Play the sound.
                 audio.play();
