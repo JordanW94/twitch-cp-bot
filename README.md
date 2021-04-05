@@ -1,4 +1,4 @@
-## twitch-cp-wheel-of-fortune
+## twitch-cp-bot
 Twitch channel points wheel of fortune and Song Request
 
 ## Description
