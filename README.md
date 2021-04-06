@@ -170,7 +170,7 @@ The text a user can enter in the Channel Points reward relates to the power of s
 
 - Add a Browser source
 - Tick local file and navigate to the index.html
-- Change the width and height to your usual resolution. e.g 1920x1080
+- Change the width and height to a resolution of your liking. I use this; width: 650, height: 1080.
 - Set the CSS to the below
 
 ```CSS
