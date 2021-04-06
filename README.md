@@ -92,10 +92,10 @@ var wheelConfig = {
 // Start of wheel config
     '49429337-fd15-41ac-a2ae-5848690a13ae': {    // Change this to your Channel Points ID
         'audioVolume'     : 0.1,        // Volume
-        'outerRadius'     : 212,        // Set outer radius so wheel fits inside the background.
-        'innerRadius'     : 75,         // Make wheel hollow so segments don't go all way to center.
+        'outerRadius'     : 316,        // Set outer radius so wheel fits inside the background.
+        'innerRadius'     : 70,         // Make wheel hollow so segments don't go all way to center.
         'textFontSize'    : 24,         // Set default font size for the segments.
-        'textOrientation' : 'vertical', // Make text vertial so goes down from the outside of wheel.
+        'textOrientation' : 'horizontal', // Make text vertial so goes down from the outside of wheel.
         'textAlignment'   : 'outer',    // Align text to outside of wheel.
         'numSegments'     : 24,         // Specify number of segments.
         'segments'        :             // Define segments including colour and text.
